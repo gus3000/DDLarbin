@@ -1,6 +1,9 @@
 # token container
 *.token
 
+# emacs temp files
+*~
+
 # Logs
 logs
 *.log
