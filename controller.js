@@ -2,5 +2,6 @@
 
 exports.printCharacter = function(name)
 {
-  console.log(name)
+  char = require("./characters/"+ name); //this is genius
+  console.log(char);
 }
