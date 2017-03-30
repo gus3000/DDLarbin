@@ -2,4 +2,4 @@
 
 const Controller = require('./controller')
 
-Controller.printCharacter("dummy")
+console.log(Controller.Characters())
