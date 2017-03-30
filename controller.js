@@ -1,9 +1,10 @@
 // Controller
 var fs = require('fs')
 
+var charactersPath = './characters/';
 
 exports.Characters = function () {
-  dirname = './characters/';
+  dirname = charactersPath;
   chars = [];
   filenames = fs.readdirSync(dirname);
 
@@ -16,7 +17,8 @@ exports.Characters = function () {
 
 exports.Character = function (name) {
   try {
-    return require('./characters/' + name);
+    delete require.cache[require.resolve(charactersPath + name)] // TODO do this when modifying file
+    return require(charactersPath + name);
   }
   catch (e) {
     return '';
@@ -25,7 +27,7 @@ exports.Character = function (name) {
 
 exports.printCharacter = function (name) {
   try {
-    char = require("./characters/" + name); // this is genius
+    char = require(charactersPath + name); // this is genius
     console.log(char);
   } catch (e) {
     console.log('{}')
