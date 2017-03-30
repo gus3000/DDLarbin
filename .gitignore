@@ -4,6 +4,9 @@
 # emacs temp files
 *~
 
+# visual code temp files
+.vscode
+
 # Logs
 logs
 *.log
