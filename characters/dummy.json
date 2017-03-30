@@ -1,4 +1,23 @@
 {
   "name": "dummy",
-  "playerName": "nobody"
+  "header": {
+    "classes": {},
+    "background": "",
+    "playerName": "nobody",
+    "race": "",
+    "alignment": "",
+    "experiencePoints": 0
+  },
+  "abilities": {
+    "strength": 0,
+    "dexterity": 0,
+    "constitution": 0,
+    "intelligence": 0,
+    "wisdom": 0,
+    "charisma": 0
+  },
+
+  "inspiration": false
+  
+  
 }
