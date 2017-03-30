@@ -1,23 +1,22 @@
 {
   "name": "melmor",
   "header": {
-    "classes": {},
-    "background": "",
-    "playerName": "",
-    "race": "",
-    "alignment": "",
+    "classes": {
+      "wizard": 9
+    },
+    "background": "Necromancer redeemed Technomancer",
+    "playerName": "gus3000",
+    "race": "Forest Gnome",
+    "alignment": "LG",
     "experiencePoints": 0
   },
   "abilities": {
-    "strength": 0,
-    "dexterity": 0,
-    "constitution": 0,
-    "intelligence": 0,
-    "wisdom": 0,
-    "charisma": 0
+    "strength": 10,
+    "dexterity": 18,
+    "constitution": 13,
+    "intelligence": 20,
+    "wisdom": 15,
+    "charisma": 11
   },
-
   "inspiration": false
-  
-  
 }
