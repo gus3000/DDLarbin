@@ -1,0 +1,19 @@
+{
+    "he": "header",
+
+    "ba": "background",
+    "pl": "playerName",
+    "al": "alignment",
+
+    "a": "abilities",
+    "as": "abilityScores",
+
+    
+    "st": "strength",
+    "de": "dexterity",
+    "co": "constitution",
+    "in": "intelligence",
+    "wi": "wisdom",
+    "ch": "charisma"
+
+}
