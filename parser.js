@@ -1,7 +1,8 @@
 // parser
 
 const Slimbot = require('slimbot');
-const Controller = require('./controller')
+const Controller = require('./controller');
+const fs = require('fs');
 
 const slimbot = new Slimbot(process.env['TELEGRAM_BOT_TOKEN']);
 
@@ -34,6 +35,7 @@ exports.parseMessage = function (message) {
         character = Controller.Character(name);
         if (character) {
             slimbot.sendMessage(message.chat.id, 'Character *' + name + '*\'s JSON description :```\n' + JSON.stringify(character, null, 4) + '```', {parse_mode: 'Markdown'});
+            slimbot.sendDocument(message.chat.id, fs.createReadStream(Controller.CharacterSheet(name)));
         }
         else {
             slimbot.sendMessage(message.chat.id, 'Character *' + name + '* unknown', { parse_mode: 'Markdown' });

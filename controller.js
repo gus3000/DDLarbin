@@ -99,6 +99,11 @@ exports.printCharacter = function (name) {
   }
 }
 
+exports.CharacterSheet = function(name)
+{
+  return sheetsPath + name + '.svg';
+}
+
 exports.ComputeSheet = function (name, baseSheet) {
   name = name || "dummy";
   baseSheet = baseSheet || "fiche_FR";

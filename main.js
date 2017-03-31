@@ -5,7 +5,7 @@ const slimbot = new Slimbot(process.env['TELEGRAM_BOT_TOKEN']);
 
 // Register listeners
 
-slimbot.on('inline_query', Parser.parseQuery)
+slimbot.on('inline_query', Parser.parseQuery);
 
 slimbot.on('message', Parser.parseMessage);
 
