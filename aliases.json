@@ -6,6 +6,8 @@
     "al": "alignment",
 
     "prof": "proficiency",
+    "pro": "proficiencies",
+    "sk": "skills",
 
     "a": "abilities",
     "as": "abilityScores",
@@ -18,5 +20,4 @@
     "in": "intelligence",
     "wi": "wisdom",
     "ch": "charisma"
-
 }

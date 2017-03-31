@@ -36,14 +36,14 @@
     "insight": false,
     "intimidation": false,
     "investigation": false,
-    "medicine": false,
+    "medicine": true,
     "nature": false,
     "perception": false,
     "performance": false,
     "persuasion": false,
     "religion": false,
     "sleightOfHand": false,
-    "stealth": false,
+    "stealth": true,
     "survival": false
   },
   "inspiration": false

@@ -2,4 +2,4 @@
 
 const Controller = require('./controller')
 
-console.log(Controller.Characters())
+Controller.ComputeSheet("melmor");

@@ -50,6 +50,17 @@ exports.CompleteCharacter = function (char) {
     char.abilityScores[a] = modVal >= 0 ? "+" + modVal : modVal;
   });
 
+  //black dots
+  Object.keys(char.proficiencies).forEach(p => {
+    val = char.proficiencies[p];
+    if (val) {
+      char.proficiencies[p] = "●";
+    }
+    else {
+      char.proficiencies[p] = "";
+    }
+  });
+
   //saving throws
   char.savingThrows = {};
   Object.keys(char.abilityScores).forEach(a => {
@@ -59,8 +70,25 @@ exports.CompleteCharacter = function (char) {
     }
     char.savingThrows[a] = score >= 0 ? "+" + score : score;
   });
+
+  //skills
+  skillsAbilities = require('./skills.json');
+  char.skills = {};
+  console.log(skillsAbilities);
+  Object.keys(skillsAbilities).forEach(skill => {
+    ability = skillsAbilities[skill];
+    score = parseInt(char.abilityScores[ability]);
+    if (char.proficiencies[skill]) {
+      score += parseInt(char.proficiency);
+    }
+    char.skills[skill] = score >= 0 ? "+" + score : score;
+  });
+  console.log('licorne');
+
   return char;
 }
+
+
 
 exports.printCharacter = function (name) {
   try {
@@ -86,42 +114,30 @@ exports.ComputeSheet = function (name, baseSheet) {
   svgNewContent = svgContent.replace(/\$\$(.*)\$\$/g, (match, fieldName, offset, string) => {
     //console.log('found ' + fieldName + 'from '+ name);
     fields = fieldName.split('.');
-    if (character.fields[0] != undefined) {
-      current = character;
-      for (var i = 0; i < fields.length; i++) {
-        potentialAlias = aliases[fields[i]];
-        if (potentialAlias) {
-          fields[i] = potentialAlias;
-        }
-        // console.log('before : ' + current);
-        current = current[fields[i]];
-        // console.log('after ' + fields[i] + ': ' + current);
+    current = character;
+    for (var i = 0; i < fields.length; i++) {
+      potentialAlias = aliases[fields[i]];
+      if (potentialAlias) {
+        fields[i] = potentialAlias;
       }
-      if (typeof current === 'object') {
-        s = "";
-        keys = Object.keys(current);
-        if (keys.length > 1) {
-          //console.log("complex object to print ! This could go wrong.")
-        }
-        keys.forEach(v => {
-          s += v + ": " + current[v] + "\n";
-        });
-        return s;
+      // console.log('before : ' + current);
+      current = current[fields[i]];
+      // console.log('after ' + fields[i] + ': ' + current);
+    }
+    if (typeof current === 'object') {
+      s = "";
+      keys = Object.keys(current);
+      if (keys.length > 1) {
+        //console.log("complex object to print ! This could go wrong.")
       }
-
-      return current;
+      keys.forEach(v => {
+        s += v + ": " + current[v] + "\n";
+      });
+      return s;
     }
-    else // it's a keyword
-    {
-      field = fields[0];
-      potentialAlias = aliases[field];
-        if (potentialAlias) {
-          field = potentialAlias;
-        }
-      
-        //TODO
 
-    }
+    return current;
+
   });
 
   fs.writeFileSync(sheetName, svgNewContent);
