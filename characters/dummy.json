@@ -6,7 +6,7 @@
     "playerName": "nobody",
     "race": "",
     "alignment": "",
-    "experiencePoints": 0
+    "xp": 0
   },
   "abilities": {
     "strength": 0,

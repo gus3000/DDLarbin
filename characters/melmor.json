@@ -1,14 +1,14 @@
 {
-  "name": "melmor",
+  "name": "Melmor",
   "header": {
     "classes": {
       "wizard": 9
     },
-    "background": "Necromancer redeemed Technomancer",
+    "background": "Technomancer",
     "playerName": "gus3000",
     "race": "Forest Gnome",
     "alignment": "LG",
-    "experiencePoints": 0
+    "xp": 0
   },
   "abilities": {
     "strength": 10,
