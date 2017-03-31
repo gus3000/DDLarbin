@@ -5,9 +5,12 @@
     "pl": "playerName",
     "al": "alignment",
 
+    "prof": "proficiency",
+
     "a": "abilities",
     "as": "abilityScores",
-
+    "pr": "proficiencies",
+    "sa": "savingThrows",
     
     "st": "strength",
     "de": "dexterity",
