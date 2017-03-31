@@ -18,5 +18,13 @@
     "wisdom": 15,
     "charisma": 11
   },
+  "proficiencies": {
+    "strength": false,
+    "dexterity": false,
+    "constitution": false,
+    "intelligence": true,
+    "wisdom": true,
+    "charisma": false
+  },
   "inspiration": false
 }
