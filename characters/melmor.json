@@ -24,7 +24,27 @@
     "constitution": false,
     "intelligence": true,
     "wisdom": true,
-    "charisma": false
+    "charisma": false,
+
+
+    "acrobatics": false,
+    "animalHandling": false,
+    "arcana": true,
+    "athletics": false,
+    "deception": false,
+    "history": true,
+    "insight": false,
+    "intimidation": false,
+    "investigation": false,
+    "medicine": false,
+    "nature": false,
+    "perception": false,
+    "performance": false,
+    "persuasion": false,
+    "religion": false,
+    "sleightOfHand": false,
+    "stealth": false,
+    "survival": false
   },
   "inspiration": false
 }

@@ -1,0 +1,30 @@
+{
+  "name": "Voïran",
+  "header": {
+    "classes": {
+      "cleric": 4
+    },
+    "background": "plouf",
+    "playerName": "Antoine",
+    "race": "Dwarf (mountain)",
+    "alignment": "CN",
+    "xp": 0
+  },
+  "abilities": {
+    "strength": 20,
+    "dexterity": 12,
+    "constitution": 15,
+    "intelligence": 8,
+    "wisdom": 16,
+    "charisma": 8
+  },
+  "proficiencies": {
+    "strength": false,
+    "dexterity": false,
+    "constitution": false,
+    "intelligence": false,
+    "wisdom": true,
+    "charisma": true
+  },
+  "inspiration": false
+}
