@@ -1,48 +1,48 @@
 {
-    "name": "Voïran",
+    "name": "Astrid",
     "header": {
         "classes": {
-            "cleric": 4
+            "druid": 4
         },
         "background": " ",
-        "playerName": "Antoine",
-        "race": "Mountain Dwarf",
+        "playerName": "Alix",
+        "race": "Human",
         "alignment": "LG",
         "xp": 0
     },
     "abilities": {
-        "strength": 20,
-        "dexterity": 12,
-        "constitution": 15,
-        "intelligence": 8,
-        "wisdom": 16,
-        "charisma": 8
+        "strength": 12,
+        "dexterity": 14,
+        "constitution": 11,
+        "intelligence": 15,
+        "wisdom": 20,
+        "charisma": 12
     },
     "proficiencies": {
         "strength": false,
         "dexterity": false,
         "constitution": false,
-        "intelligence": false,
+        "intelligence": true,
         "wisdom": true,
-        "charisma": true,
-        "acrobatics": false,
-        "animalHandling": false,
+        "charisma": false,
+        "acrobatics": true,
+        "animalHandling": true,
         "arcana": false,
-        "athletics": true,
+        "athletics": false,
         "deception": false,
         "history": false,
-        "insight": true,
-        "intimidation": true,
+        "insight": false,
+        "intimidation": false,
         "investigation": false,
         "medicine": false,
-        "nature": false,
+        "nature": true,
         "perception": false,
         "performance": false,
         "persuasion": false,
-        "religion": true,
+        "religion": false,
         "sleightOfHand": false,
         "stealth": false,
-        "survival": false
+        "survival": true
     },
     "inspiration": false
 }
