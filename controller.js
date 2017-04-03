@@ -19,10 +19,15 @@ exports.Characters = function () {
 exports.Character = function (name, complete) {
   try {
     delete require.cache[require.resolve(charactersPath + name)] // TODO do this when modifying file
+    char = require(charactersPath + name);
+
+    //fill absent values
+    //TODO
+
     if (complete) {
-      return exports.CompleteCharacter(require(charactersPath + name));
+      return exports.CompleteCharacter(char);
     }
-    return require(charactersPath + name);
+    return char;
   }
   catch (e) {
     return '';
@@ -101,7 +106,12 @@ exports.printCharacter = function (name) {
 
 exports.CharacterSheet = function(name)
 {
-  return sheetsPath + name + '.svg';
+  fullname = sheetsPath + name + '.svg';
+  if(!fs.exists(fullname))
+  {
+    exports.ComputeSheet(name);
+  }
+  return fullname;
 }
 
 exports.ComputeSheet = function (name, baseSheet) {
@@ -112,6 +122,7 @@ exports.ComputeSheet = function (name, baseSheet) {
   sheetName = sheetsPath + name + '.svg';
 
   character = exports.Character(name, true);
+  dummy = exports.Character('dummy', false);
   console.log('computing sheet for ' + name + ' : ' + JSON.stringify(character, null, 4));
   aliases = require('./aliases');
 

@@ -34,12 +34,29 @@ exports.parseMessage = function (message) {
         name = charMatch[1];
         character = Controller.Character(name);
         if (character) {
-            slimbot.sendMessage(message.chat.id, 'Character *' + name + '*\'s JSON description :```\n' + JSON.stringify(character, null, 4) + '```', {parse_mode: 'Markdown'});
-            slimbot.sendDocument(message.chat.id, fs.createReadStream(Controller.CharacterSheet(name)));
+            //slimbot.sendMessage(message.chat.id, 'Character *' + name + '*\'s JSON description :```\n' + JSON.stringify(character, null, 4) + '```', {parse_mode: 'Markdown'});
+            //slimbot.sendDocument(message.chat.id, fs.createReadStream(Controller.CharacterSheet(name)));
+            let optionalParams = {
+                parse_mode: 'Markdown',
+                reply_markup: JSON.stringify({
+                    inline_keyboard: [[
+                        { text: 'JSON', callback_data: 'hello' }
+                    ], [
+                        { text: 'SVG', callback_data: 'good' }
+                    ]]
+                })
+            };
+            // reply when user sends a message, and send him our inline keyboard as well
+            slimbot.sendMessage(message.chat.id, 'Message received', optionalParams);
         }
         else {
             slimbot.sendMessage(message.chat.id, 'Character *' + name + '* unknown', { parse_mode: 'Markdown' });
         }
     }
     //slimbot.sendMessage(message.chat.id, 'received message :"' + message.text + '" from ' + message.from.username)
+}
+
+function sendJSON(name)
+{
+    
 }
