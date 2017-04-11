@@ -1,5 +1,6 @@
 exports['testing random asserts'] = function(assert) {
-    assert.ifError(0);
+    //assert.ifError(0);
+    console.log(assert);
 }
 
 exports['test that logs all failures'] = function(assert) {
