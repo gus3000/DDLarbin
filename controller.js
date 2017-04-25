@@ -17,12 +17,19 @@ exports.Characters = function () {
 }
 
 exports.Character = function (name, complete) {
+
+  var char = JSON.parse(fs.readFileSync(charactersPath + name + '.json', 'utf8'));
+  if (complete) {
+    return exports.CompleteCharacter(char);
+  }
+  return char;
+
+
+  // require gives problems with paths
+  /*
   try {
     delete require.cache[require.resolve(charactersPath + name)] // TODO do this when modifying file
     char = require(charactersPath + name);
-
-    //fill absent values
-    //TODO
 
     if (complete) {
       return exports.CompleteCharacter(char);
@@ -32,11 +39,13 @@ exports.Character = function (name, complete) {
   catch (e) {
     return '';
   }
+  //*/
+
 }
 
 exports.AddCharacter = function (char) {
   name = char.name;
-  
+
 }
 
 exports.CompleteCharacter = function (char) {

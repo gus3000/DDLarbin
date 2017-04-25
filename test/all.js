@@ -26,28 +26,13 @@ describe('Controller', function () {
     });
     it('adding character', function () {
       dummy = {
-        "name": "dummy",
-        "header": {
-          "classes": {},
-          "background": "",
-          "playerName": "nobody",
-          "race": "",
-          "alignment": "",
-          "xp": 0
-        },
-        "abilities": {
-          "strength": 0,
-          "dexterity": 0,
-          "constitution": 0,
-          "intelligence": 0,
-          "wisdom": 0,
-          "charisma": 0
-        },
-        "inspiration": false
+        "name": "dummy"
       };
+      console.log('current dir' + process.cwd());
       controller.AddCharacter(dummy);
       assert.deepEqual(controller.Characters(), []);
       assert.deepEqual(controller.Character(dummy.name), dummy);
     });
+    
   });
 });
