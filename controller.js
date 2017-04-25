@@ -34,6 +34,11 @@ exports.Character = function (name, complete) {
   }
 }
 
+exports.AddCharacter = function (char) {
+  name = char.name;
+  
+}
+
 exports.CompleteCharacter = function (char) {
 
   //proficiency
@@ -104,11 +109,9 @@ exports.printCharacter = function (name) {
   }
 }
 
-exports.CharacterSheet = function(name)
-{
+exports.CharacterSheet = function (name) {
   fullname = sheetsPath + name + '.svg';
-  if(!fs.exists(fullname))
-  {
+  if (!fs.exists(fullname)) {
     exports.ComputeSheet(name);
   }
   return fullname;
