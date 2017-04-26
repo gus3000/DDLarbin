@@ -1,5 +1,6 @@
 // Controller
-var fs = require('fs')
+var fs = require('fs-extra');
+var path = require('path');
 
 var charactersPath = './characters/';
 var sheetsPath = './sheets/';
@@ -18,7 +19,13 @@ exports.Characters = function () {
 
 exports.Character = function (name, complete) {
 
-  var char = JSON.parse(fs.readFileSync(charactersPath + name + '.json', 'utf8'));
+  var charPath = charactersPath + name + '.json';
+  //console.log(path.resolve(charPath));
+  if (!fs.existsSync(charPath)) {
+    //console.log('char '+ name +' doesn\'t exist');
+    return null;
+  }
+  var char = JSON.parse(fs.readFileSync(charPath, 'utf8'));
   if (complete) {
     return exports.CompleteCharacter(char);
   }
@@ -45,7 +52,22 @@ exports.Character = function (name, complete) {
 
 exports.AddCharacter = function (char) {
   name = char.name;
+  charPath = charactersPath + name + '.json';
+  if(fs.exists(charPath))
+  {
+    throw new CharacterExistsException;
+  }
+  fs.writeFileSync(charPath, JSON.stringify(char), {encoding: "utf8"});
 
+}
+
+exports.DeleteCharacter = function (name) {
+  charPath = charactersPath + name + '.json';
+  if (fs.existsSync(charPath)) {
+    fs.unlinkSync(charPath);
+    return 0;
+  }
+  return -1;
 }
 
 exports.CompleteCharacter = function (char) {
