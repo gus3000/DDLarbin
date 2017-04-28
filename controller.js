@@ -60,7 +60,7 @@ exports.CompleteCharacter = function (char) {
   //default values if needed
   default_char = require('./default_character');
   utils.handleDefaultValues(char, default_char);
-  
+
 
 
   //proficiency
@@ -119,17 +119,6 @@ exports.CompleteCharacter = function (char) {
   });
 
   return char;
-}
-
-
-
-exports.printCharacter = function (name) {
-  try {
-    char = require(charactersPath + name); // this is genius
-    console.log(char);
-  } catch (e) {
-    console.log('{}');
-  }
 }
 
 exports.CharacterSheet = function (name) {

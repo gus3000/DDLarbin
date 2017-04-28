@@ -188,7 +188,7 @@ describe('Controller', function () {
         controller.AddCharacter(melmor);
 
         assert.deepEqual(controller.Character(melmor.name), melmor);
-        console.log(JSON.stringify(controller.Character(melmor.name, true), null, '  '));
+        //console.log(JSON.stringify(controller.Character(melmor.name, true), null, '  '));
         assert.deepEqual(controller.Character(melmor.name, true), melmor);
       });
 
@@ -211,6 +211,10 @@ describe('Controller', function () {
         controller.DeleteCharacter("dummySimple");
         assert.deepEqual(controller.Character("dummySimpledd"), null);
       });
+      it.skip('deleting all characters', function () {
+
+      });
     });
+
   });
 });
