@@ -12,7 +12,8 @@ exports.Characters = function () {
   filenames = fs.readdirSync(dirname);
 
   filenames.forEach(function (filename) {
-    c = require(dirname + filename);
+    charPath = dirname + filename;
+    c = JSON.parse(fs.readFileSync(charPath, 'utf8'));
     chars.push(c);
   })
   return chars;
@@ -41,7 +42,6 @@ exports.AddCharacter = function (char) {
     //console.log('char exists');
     throw "Character already exists";
   }
-  console.log('char does not exist');
   fs.writeFileSync(charPath, JSON.stringify(char), { encoding: "utf8" });
 
 }
@@ -138,7 +138,7 @@ exports.ComputeSheet = function (name, baseSheet) {
 
   character = exports.Character(name, true);
   dummy = exports.Character('dummy', false);
-  console.log('computing sheet for ' + name + ' : ' + JSON.stringify(character, null, 4));
+  //console.log('computing sheet for ' + name + ' : ' + JSON.stringify(character, null, 4));
   aliases = require('./aliases');
 
   svgContent = fs.readFileSync(baseSheetName).toString();

@@ -15,6 +15,7 @@ before(function () {
   process.chdir(tmpDir);
   fs.mkdirpSync('characters');
   fs.mkdirpSync('sheets');
+  fs.copySync(oldDir +'/sheets/fiche_FR.svg', 'sheets/fiche_FR.svg');
 });
 
 after(function () {
@@ -201,7 +202,15 @@ describe('Controller', function () {
       });
     });
 
-
+    describe('Sheet creation', function () {
+      it('creates simple sheet', function () {
+        if (!controller.Character("dummySimple")) {
+          this.skip();
+        }
+        controller.ComputeSheet("dummySimple");
+        assert.ok(fs.existsSync("./sheets/dummySimple.svg"));
+      })
+    });
 
     describe('Deleting characters', function () {
       it('deleting added character', function () {
@@ -211,10 +220,15 @@ describe('Controller', function () {
         controller.DeleteCharacter("dummySimple");
         assert.deepEqual(controller.Character("dummySimpledd"), null);
       });
-      it.skip('deleting all characters', function () {
-
+      it('deleting all characters', function () {
+        controller.Characters().forEach(function(element) {
+          controller.DeleteCharacter(element.name);
+        }, this);
+        assert.deepEqual(controller.Characters(), []);
       });
     });
+
+
 
   });
 });
