@@ -31,7 +31,7 @@ describe('Controller', function () {
     describe('Adding characters', function () {
       it('adding simple character', function () {
         dummy = {
-          "name": "dummy"
+          "name": "dummySimple"
         };
 
         assert.deepEqual(controller.Characters(), []);
@@ -46,8 +46,12 @@ describe('Controller', function () {
 
       });
 
-      it.skip('adding existing character', function () {
-
+      it('adding existing character', function () {
+        dummy = {
+          "name": "dummySimple"
+        };
+        assert.deepEqual(controller.Character(dummy.name), dummy);
+        assert.throws(function() { controller.AddCharacter(dummy);}, 'Character already exists');
       });
     });
 

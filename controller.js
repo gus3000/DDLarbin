@@ -52,11 +52,14 @@ exports.Character = function (name, complete) {
 
 exports.AddCharacter = function (char) {
   name = char.name;
+  console.log('adding char with name '+ name);
   charPath = charactersPath + name + '.json';
-  if(fs.exists(charPath))
+  if(fs.existsSync(charPath))
   {
-    throw new CharacterExistsException;
+    console.log('char exists');
+    throw "Character already exists";
   }
+  console.log('char does not exist');
   fs.writeFileSync(charPath, JSON.stringify(char), {encoding: "utf8"});
 
 }
@@ -142,7 +145,7 @@ exports.printCharacter = function (name) {
 
 exports.CharacterSheet = function (name) {
   fullname = sheetsPath + name + '.svg';
-  if (!fs.exists(fullname)) {
+  if (!fs.existsSync(fullname)) {
     exports.ComputeSheet(name);
   }
   return fullname;
