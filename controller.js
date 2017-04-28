@@ -30,33 +30,15 @@ exports.Character = function (name, complete) {
     return exports.CompleteCharacter(char);
   }
   return char;
-
-
-  // require gives problems with paths
-  /*
-  try {
-    delete require.cache[require.resolve(charactersPath + name)] // TODO do this when modifying file
-    char = require(charactersPath + name);
-
-    if (complete) {
-      return exports.CompleteCharacter(char);
-    }
-    return char;
-  }
-  catch (e) {
-    return '';
-  }
-  //*/
-
 }
 
 exports.AddCharacter = function (char) {
   name = char.name;
-  console.log('adding char with name '+ name);
+  //console.log('adding char with name '+ name);
   charPath = charactersPath + name + '.json';
   if(fs.existsSync(charPath))
   {
-    console.log('char exists');
+    //console.log('char exists');
     throw "Character already exists";
   }
   console.log('char does not exist');
