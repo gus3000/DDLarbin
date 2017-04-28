@@ -1,6 +1,7 @@
 // Controller
 var fs = require('fs-extra');
 var path = require('path');
+var utils = require('./utils');
 
 var charactersPath = './characters/';
 var sheetsPath = './sheets/';
@@ -36,13 +37,12 @@ exports.AddCharacter = function (char) {
   name = char.name;
   //console.log('adding char with name '+ name);
   charPath = charactersPath + name + '.json';
-  if(fs.existsSync(charPath))
-  {
+  if (fs.existsSync(charPath)) {
     //console.log('char exists');
     throw "Character already exists";
   }
   console.log('char does not exist');
-  fs.writeFileSync(charPath, JSON.stringify(char), {encoding: "utf8"});
+  fs.writeFileSync(charPath, JSON.stringify(char), { encoding: "utf8" });
 
 }
 
@@ -57,6 +57,12 @@ exports.DeleteCharacter = function (name) {
 
 exports.CompleteCharacter = function (char) {
 
+  //default values if needed
+  default_char = require('./default_character');
+  utils.handleDefaultValues(char, default_char);
+  
+
+
   //proficiency
   totalLevels = 0;
   classes = Object.keys(char.header.classes);
@@ -70,6 +76,7 @@ exports.CompleteCharacter = function (char) {
 
   //ability scores
   char.abilityScores = {};
+
   Object.keys(char.abilities).forEach(a => {
     val = char.abilities[a];
     modVal = Math.floor((val - 10) / 2);
@@ -77,13 +84,14 @@ exports.CompleteCharacter = function (char) {
   });
 
   //black dots
+  char.proficienciesString = {};
   Object.keys(char.proficiencies).forEach(p => {
     val = char.proficiencies[p];
     if (val) {
-      char.proficiencies[p] = "●";
+      char.proficienciesString[p] = "●";
     }
     else {
-      char.proficiencies[p] = "";
+      char.proficienciesString[p] = "";
     }
   });
 
@@ -100,7 +108,7 @@ exports.CompleteCharacter = function (char) {
   //skills
   skillsAbilities = require('./skills.json');
   char.skills = {};
-  console.log(skillsAbilities);
+  //console.log(skillsAbilities);
   Object.keys(skillsAbilities).forEach(skill => {
     ability = skillsAbilities[skill];
     score = parseInt(char.abilityScores[ability]);
@@ -109,7 +117,6 @@ exports.CompleteCharacter = function (char) {
     }
     char.skills[skill] = score >= 0 ? "+" + score : score;
   });
-  console.log('licorne');
 
   return char;
 }

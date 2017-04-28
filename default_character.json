@@ -1,0 +1,48 @@
+{
+  "name": "IHazNoName",
+  "header": {
+    "classes": {
+    },
+    "background": "",
+    "playerName": "",
+    "race": "",
+    "alignment": "N",
+    "xp": 0
+  },
+  "abilities": {
+    "strength": 10,
+    "dexterity": 10,
+    "constitution": 10,
+    "intelligence": 10,
+    "wisdom": 10,
+    "charisma": 10
+  },
+  "proficiencies": {
+    "strength": false,
+    "dexterity": false,
+    "constitution": false,
+    "intelligence": false,
+    "wisdom": false,
+    "charisma": false,
+
+    "acrobatics": false,
+    "animalHandling": false,
+    "arcana": false,
+    "athletics": false,
+    "deception": false,
+    "history": false,
+    "insight": false,
+    "intimidation": false,
+    "investigation": false,
+    "medicine": false,
+    "nature": false,
+    "perception": false,
+    "performance": false,
+    "persuasion": false,
+    "religion": false,
+    "sleightOfHand": false,
+    "stealth": false,
+    "survival": false
+  },
+  "inspiration": false
+}
