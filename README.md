@@ -7,5 +7,5 @@ npm install
 ```
 ## Run
 ```bash
-node main.js
+node src/main.js
 ```
