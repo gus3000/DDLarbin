@@ -9,6 +9,8 @@ slimbot.on('inline_query', Parser.parseQuery);
 
 slimbot.on('message', Parser.parseMessage);
 
+slimbot.on('callback_query', Parser.callbackQuery);
+
 // Call API
 
 slimbot.startPolling();

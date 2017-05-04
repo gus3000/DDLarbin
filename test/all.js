@@ -227,8 +227,5 @@ describe('Controller', function () {
         assert.deepEqual(controller.Characters(), []);
       });
     });
-
-
-
   });
 });

@@ -40,9 +40,9 @@ exports.parseMessage = function (message) {
                 parse_mode: 'Markdown',
                 reply_markup: JSON.stringify({
                     inline_keyboard: [[
-                        { text: 'JSON', callback_data: 'hello' }
+                        { text: 'JSON', callback_data: {'name': name, type: 'JSON'} } //TODO changer ça, faut une string
                     ], [
-                        { text: 'SVG', callback_data: 'good' }
+                        { text: 'SVG', callback_data: {'name': name, type: 'SVG'} }
                     ]]
                 })
             };
@@ -52,11 +52,34 @@ exports.parseMessage = function (message) {
         else {
             slimbot.sendMessage(message.chat.id, 'Character *' + name + '* unknown', { parse_mode: 'Markdown' });
         }
+        return;
     }
+
+    var audioMatch = /^\/audio (.*)/g.exec(message.text);
+    if(audioMatch)
+    {
+        musicName = audioMatch[1];
+        slimbot.sendPhoto(message.chat.id, "https://upload.wikimedia.org/wikipedia/en/9/9b/Rickastleyposter.jpg");
+        slimbot.sendAudio(message.chat.id,"http://here-and-now.info/audio/rickastley_artists.mp3");
+        // slimbot.sendLocation(message.chat.id,45.771346, 4.866618);
+        //dans tous les cas on rick roll
+    }
+    
     //slimbot.sendMessage(message.chat.id, 'received message :"' + message.text + '" from ' + message.from.username)
 }
 
-function sendJSON(name)
+exports.callbackQuery = function(query)
 {
-    
+    console.log('received query :' + query);
+    if(query.data.type === 'JSON')
+    {
+        console.log('sending JSON');
+        //TODO
+    }
+    else if(query.data.type === 'SVG')
+    {
+        console.log('sending SVG');
+        //TODO
+    }
+    return true;
 }

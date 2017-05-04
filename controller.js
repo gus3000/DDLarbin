@@ -177,3 +177,8 @@ exports.ComputeSheet = function (name, baseSheet) {
 
   return sheetName;
 }
+
+exports.testLol = function()
+{
+  console.log('haha !');
+}
