@@ -58,7 +58,8 @@ exports.DeleteCharacter = function (name) {
 exports.CompleteCharacter = function (char) {
 
   //default values if needed
-  default_char = require('./default_character');
+  defaultCharPath = charactersPath + 'default_character.json';
+  default_char = JSON.parse(fs.readFileSync(defaultCharPath, 'utf8'));//require('./default_character');
   utils.handleDefaultValues(char, default_char);
 
 
@@ -106,7 +107,7 @@ exports.CompleteCharacter = function (char) {
   });
 
   //skills
-  skillsAbilities = require('./skills.json');
+  skillsAbilities = require('../skills.json');
   char.skills = {};
   //console.log(skillsAbilities);
   Object.keys(skillsAbilities).forEach(skill => {
@@ -139,7 +140,7 @@ exports.ComputeSheet = function (name, baseSheet) {
   character = exports.Character(name, true);
   dummy = exports.Character('dummy', false);
   //console.log('computing sheet for ' + name + ' : ' + JSON.stringify(character, null, 4));
-  aliases = require('./aliases');
+  aliases = require('../aliases');
 
   svgContent = fs.readFileSync(baseSheetName).toString();
   svgNewContent = svgContent.replace(/\$\$(.*)\$\$/g, (match, fieldName, offset, string) => {

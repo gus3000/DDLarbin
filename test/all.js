@@ -2,12 +2,13 @@ var assert = require('assert');
 var fs = require('fs-extra');
 var os = require('os');
 var path = require('path');
-var utils = require('../utils');
+var utils = require('../src/utils');
 
-var controller = require('../controller');
+var controller = require('../src/controller');
 
 var oldDir;
 var tmpDir = path.join(os.tmpdir(), 'ddlarbin');
+var default_char = null;
 
 before(function () {
   oldDir = process.cwd()
@@ -15,7 +16,9 @@ before(function () {
   process.chdir(tmpDir);
   fs.mkdirpSync('characters');
   fs.mkdirpSync('sheets');
-  fs.copySync(oldDir +'/sheets/fiche_FR.svg', 'sheets/fiche_FR.svg');
+  fs.copySync(oldDir + '/sheets/fiche_FR.svg', 'sheets/fiche_FR.svg');
+  fs.copySync(oldDir + '/characters/default_character.json', 'characters/default_character.json');
+  default_char = fs.readJsonSync(oldDir + '/characters/default_character.json');
 });
 
 after(function () {
@@ -26,8 +29,8 @@ after(function () {
 describe('Controller', function () {
   describe('#Characters', function () {
     describe('Getting characters', function () {
-      it('without characters', function () {
-        assert.deepEqual(controller.Characters(), []);
+      it('with just the default character', function () {
+        assert.deepEqual(controller.Characters(), [default_char]);
       });
     });
     describe('Adding characters', function () {
@@ -36,7 +39,7 @@ describe('Controller', function () {
           "name": "dummySimple"
         };
 
-        assert.deepEqual(controller.Characters(), []);
+        assert.deepEqual(controller.Characters(), [default_char]);
         controller.AddCharacter(dummy);
 
         assert.deepEqual(controller.Character(dummy.name), dummy);
@@ -221,10 +224,10 @@ describe('Controller', function () {
         assert.deepEqual(controller.Character("dummySimpledd"), null);
       });
       it('deleting all characters', function () {
-        controller.Characters().forEach(function(element) {
+        controller.Characters().forEach(function (element) {
           controller.DeleteCharacter(element.name);
         }, this);
-        assert.deepEqual(controller.Characters(), []);
+        assert.deepEqual(controller.Characters(), [default_char]);
       });
     });
   });
